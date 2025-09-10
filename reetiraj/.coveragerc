@@ -1,0 +1,31 @@
+[run]
+branch = True
+source = .
+omit =
+     *tests*
+     *migrations*
+     yaksh/test_views.py
+     yaksh/test_models.py
+     yaksh/scripts/*
+     online_test/settings.py
+     online_test/urls.py
+     online_test/test_settings.py
+     manage.py
+     online_test/wsgi.py
+     online_test/__init__.py
+     yaksh/__init__.py
+     yaksh/pipeline/*
+     yaksh/migrations/*
+     yaksh/templatetags/__init__.py
+     yaksh/templatetags/test_custom_filters.py
+     yaksh/middleware/__init__.py
+     setup.py
+     tasks.py
+     yaksh/admin.py
+     *management*
+
+[report]
+exclude_lines =
+    except ImportError:
+    raise NotImplementedError
+    if __name__ == .__main__.:
