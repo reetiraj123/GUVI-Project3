@@ -10,3 +10,5 @@ urlpatterns = [
     path('view/watch/stats/<int:course_id>/<int:lesson_id>',
          views.view_lesson_watch_stats, name='view_lesson_watch_stats'),
 ]
+
+
