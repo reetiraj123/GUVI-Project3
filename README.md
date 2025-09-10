@@ -89,4 +89,7 @@ Student - Username: student | Password: student
 Teacher - Username: teacher | Password: teacher
 User can also login to the Default Django admin using;
 
-Admin - Username: admin | Password: admin
+Admin - Username: admin | Password: admin<img width="1700" height="1200" alt="image" src="https://github.com/user-attachments/assets/f3f712f3-ac64-4fbc-8a8b-e7470b80b0b9" />
+<img width="598" height="355" alt="image" src="https://github.com/user-attachments/assets/0c5ccbf3-5984-4bee-9c63-602bd61f228e" />
+
+
