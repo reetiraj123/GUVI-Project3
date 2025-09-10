@@ -1,0 +1,66 @@
+{% extends "manage.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'yaksh/css/jquery.datetimepicker.css' %}">
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'yaksh/js/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'yaksh/js/jquery.datetimepicker.full.min.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'yaksh/js/add_course.js' %}"></script>
+{% endblock %}
+{% block title %} Add Course {% endblock %}
+{% block pagetitle %} Add Course {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-pills" id="course_tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'yaksh:courses' %}">
+                        My Courses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'yaksh:add_course' %}">
+                        Add/Edit Course
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'grades:grading_systems'%}" class="nav-link" >
+                        Add/View Grading Systems
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+    <form name=frm id=frm action="" method="post" >
+        {% csrf_token %}
+        <center>
+        <table class="table table-responsive-sm">
+        {{ form.as_table }}
+        </table>
+        <br/>
+        <script type="text/javascript">
+            $("#id_start_enroll_time").datetimepicker({format: 'Y-m-d H:i:s'});
+            $("#id_end_enroll_time").datetimepicker({format: 'Y-m-d H:i:s'});
+        </script>
+        </center>
+
+        <center>
+            <button class="btn btn-success btn-lg" type="submit" id="submit" name="course">
+                <i class="fa fa-save"></i>&nbsp;Save
+            </button>
+            <a class="btn btn-danger btn-lg" name="button" href="{% url 'yaksh:courses' %}">
+                Cancel
+            </a>
+        </center>
+        <br>
+    </form>
+    </div>
+</div>
+{% endblock %}
