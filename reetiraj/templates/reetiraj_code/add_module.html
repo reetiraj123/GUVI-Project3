@@ -1,0 +1,219 @@
+{% extends "manage.html" %}
+{% load static %}
+{% block title %}
+    Create/Edit Learning Module
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'yaksh/js/jquery-3.3.1.min.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'yaksh/js/design_course.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'yaksh/js/lesson.js' %}">
+</script>
+<script type="text/javascript" src="{% static 'yaksh/js/jquery-ui.js' %}">
+</script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'yaksh/css/design_course.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'yaksh/css/jquery-ui/jquery-ui.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+{% if course_id %}
+    <a class="btn btn-primary" href="{% url 'yaksh:get_course_modules' course_id %}">
+        <i class="fa fa-arrow-left"></i>
+        Back
+    </a>
+{% else %}
+    <a class="btn btn-primary" href="{% url 'yaksh:show_all_modules' %}">
+        <i class="fa fa-arrow-left"></i>
+        Back
+    </a>
+{% endif %}
+</div>
+<br>
+<div class="container">
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible alert-{{ message.tags }}">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="fa fa-close"></i>
+        </button>
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+<br>
+{% if status == "add" %}
+<div class="container-fluid">
+    <div class="row justify-content-center form-group">
+        <div class="col-md-5 col-md-offset-4">
+            <form name=frm id=frm action="" method="post">
+                <fieldset>
+                    {% csrf_token %}
+                    {% if module_form.errors %}
+                        {% for field in module_form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-dismissible alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <i class="fa fa-close"></i>
+                                    </button>
+                                    <strong>{{field.label}} : {{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                                <strong>{{field.label}} : {{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {{module_form.name}}
+                    <br>
+                    Active:&nbsp;{{module_form.active}}
+                    <br>
+                    <br>
+                    {{module_form.description}}
+                    <br>
+                    <center>
+                        <button class="btn btn-success btn-lg" type="submit" id="submit" name="Save">
+                            <i class="fa fa-save"></i>
+                            Save
+                        </button>
+                    </center>
+                    </form>
+                    <hr>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-5">
+            <div class="card" id="preview_text_div">
+                <div class="card-header">
+                    <center>
+                        <h3>Description Preview</h3>
+                    </center>
+                </div>
+                <div class="card-body" id="description_body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- Add learning Units -->
+{% if status == "design" %}
+<div class="container">
+<center><h2><u>{{module.name}}</u></h2></center>
+{% if course_id %}
+<form action="{% url 'yaksh:design_module' module_id course_id %}" method="POST" id="design_course_form">
+{% else %}
+<form action="{% url 'yaksh:design_module' module_id %}" method="POST" id="design_course_form">
+{% endif %}
+{% csrf_token %}
+    <div class="tab-pane active" id="available-lesson-quiz">
+        <div class="row">
+            <div class="col-md-12 available-list">
+                <div id="fixed-available-wrapper">
+                    <p><u><b>Available Lessons and quizzes: (Add Lessons and Quizzes)</b></u></p>
+                    <div id="fixed-available">
+                        <ul class="inputs-list">
+                           {% for type, unit in quiz_les_list %}
+                                <li>
+                                    <label>
+                                        {% if type == "quiz" %}
+                                        <input type="checkbox" name="quiz_lesson" data-qid="{{unit.id}}:{{type}}" value="{{unit.id}}:{{type}}">
+                                        <span>{{ unit.description }} ({{type}})</span>
+                                        {% else %}
+                                        <input type="checkbox" name="quiz_lesson" data-qid="{{unit.id}}:{{type}}" value="{{unit.id}}:{{type}}">
+                                        <span>{{ unit.name }} ({{type}})</span>
+                                        {% endif %}
+                                    </label>
+                                 </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <center>
+                <button class="btn btn-success" type="submit" id="submit" name="Add"><i class="fa fa-plus-square"></i>
+                    &nbsp;Add to Module
+                </button>
+                </center>
+                <br><br>
+            </div>
+            <div class="col-md-12 col-md-offset-2">
+                <div id="fixed-added-wrapper">
+                    <p><u><b>Chosen Lessons and quizzes:</b></u>
+                    </p>
+                    <div id="fixed-added">
+                        <table id="course-details" class="table table-bordered table-responsive-sm">
+                        <tr>
+                        <th width="5%">Select</th>
+                        <th>Quiz/Lesson</th>
+                        <th width="20%">Order</th>
+                        <th width="25%" colspan="2">Check Prerequisite
+                            <br>
+                            <a href="#" data-toggle="tooltip" id="prereq_msg">
+                                What's This&nbsp;<i class="fa fa-question-circle"></i>
+                            </a>
+                        </th>
+                        </tr>
+                        <tr>
+                            <th scope="row">&nbsp;</th>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <th>Currently</th>
+                            <th>Change</th>
+                        </tr>
+                        </tr>
+                           {% for unit in learning_units %}
+                            <tr>
+                            <ul class="inputs-list">
+                            <td>
+                                <input type="checkbox" name="delete_list" value="{{unit.id}}">
+                            </td>
+                            {% if unit.type == "quiz" %}
+                                <td><span>{{ unit.quiz.description }} ({{unit.type}})
+                                </span></td>
+                                <td><input type="number" name="order" data-item-id="{{unit.id}}" value="{{unit.order}}" step="1"></td>
+                            {% else %}
+                                <td><span>{{ unit.lesson.name }} ({{unit.type}})
+                                </span></td>
+                                <td><input type="number" name="order" data-item-id="{{unit.id}}" value="{{unit.order}}" step="1"></td>
+                            {% endif %}
+                                <td>
+                                    {% if unit.check_prerequisite %}
+                                        Yes
+                                    {% else %}
+                                        No
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="check_prereq" value="{{unit.id}}">
+                                </td>
+                            </ul>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <center>
+                <button id="Remove" name="Remove" class="btn btn-danger" type="submit"> <i class="fa fa-minus-square"></i>&nbsp;Remove from Module</button>
+                <button id="Change" name="Change" class="btn btn-info" type="submit"><i class="fa fa-reorder"></i>&nbsp;Change Order</button>
+                <button id="Change" name="Change_prerequisite" class="btn btn-primary" type="submit"> Change Prerequisite</button>
+                </center>
+            </div>
+        </div> <!-- /.row -->
+    </div>
+</form>
+{% endif %}
+</div>
+{% endblock %}
