@@ -13,7 +13,7 @@ Supports automatic and manual grading, regrading of quiz.
 Add grading system to the course.
 Scales to over 500+ simultaneous users.
 Distributed under the BSD license.
-To get a glimpse of all the available features check our demo website https://yaksh-demo.fossee.in. It has 50 teacher and student login.
+To get a glimpse of all the available features check our demo website https:// It has 50 teacher and student login.
 
 Sample teacher login
 
