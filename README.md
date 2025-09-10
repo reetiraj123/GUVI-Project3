@@ -22,6 +22,9 @@ nstallation
 Note: Currently, only Linux and MacOS is supported for the project.
 
 If Python 3.6 and above is not available in the system, then we recommend using miniconda. Download miniconda with Python 3.6 and above.
+click here for site  https://reetiraj123.github.io/GUVI_P1/
+
+
 
 Installing Miniconda
 
