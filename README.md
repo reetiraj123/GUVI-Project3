@@ -91,5 +91,7 @@ User can also login to the Default Django admin using;
 
 Admin - Username: admin | Password: admin<img width="1700" height="1200" alt="image" src="https://github.com/user-attachments/assets/f3f712f3-ac64-4fbc-8a8b-e7470b80b0b9" />
 <img width="598" height="355" alt="image" src="https://github.com/user-attachments/assets/0c5ccbf3-5984-4bee-9c63-602bd61f228e" />
+![questions](https://github.com/user-attachments/assets/0ff3a7a1-04e0-405c-8e68-6162c542f10a)
+![course_features](https://github.com/user-attachments/assets/96116f2f-48b8-4cc8-bc98-6daef9bc5a73)
 
 
