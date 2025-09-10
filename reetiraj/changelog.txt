@@ -1,0 +1,343 @@
+=== 0.31.1 (24-03-2021) ===
+
+* Add support for QR code generation in local or S3 storage
+
+=== 0.31.0 (24-03-2021) ===
+
+* Add support for S3 file upload.
+* Add JS client dropzone to make file upload easier.
+* Fix a issue in assignment upload where older files were shown for new attempt in quiz.
+
+=== 0.30.1 (08-02-2021) ===
+
+* UI changes in course and questions page.
+* Refactor code in some parts and optimize.
+* Fix a issue where student interface shows error without question paper in quiz.
+* Fix a minor bug where trial modules are shown.
+
+=== 0.30.0 (12-01-2021) ===
+
+* Add new UI skin.
+* Add feature to count number of times MCQ option has been selected.
+* Fix bug to delete and recreate fresh question papers when using god mode or user mode.
+* Add feature to show stats for number of times MCQ option has been selected.
+
+=== 0.29.3 (10-12-2020) ===
+
+* Show the graphs for the lesson video statistics page.
+* Show the completed students counts in course modules page.
+* Add and show django messages in discussion forum page.
+* Remove Sidebar in the discussion forum page instead used bootstrap nav pills.
+* Optimisation in retrieving and rendering the data
+* Avoids the arrange type question's custom filter error
+
+=== 0.29.2 (19-11-2020) ===
+
+* Add dropdown selection for lesson video options
+* Show total visits per student in lesson statistics.
+* Remove settimeout ajax calls for tracking video positions.
+* Show initial views per lesson in the course modules section.
+* Add tinymce editor for all the textareas.
+
+=== 0.29.1 (12-11-2020) ===
+
+* Fixed issue onclick toc jump to player time.
+* Used bootstrap modal instead of jquery dialog for responsive interface.
+* Disallow empty question submission for lesson quiz.
+* Fixed issue where the videos other than youtube does not get the duration.
+
+=== 0.29.0 (07-11-2020) ===
+
+* Add feature to track lesson video views
+* Fix post and comments deletion
+
+=== 0.28.0 (04-11-2020) ===
+
+* Add ability for added teachers to delete posts and comments
+* Add feature to update marks using CSV upload
+* Add feature to visualise in lesson questions
+* Fix katex render to allow math inline
+
+=== 0.27.0 (08-10-2020) ===
+
+* Fix template footer CSS
+* Add lesson comments feature
+
+=== 0.26.0 (07-10-2020) ===
+
+* Fix bug that sets module and lesson prerequisites to false
+* Add video lesson feature
+* Show assignment upload file in view answerpaper 
+
+=== 0.25.0 (14-09-2020) ===
+
+* Fix bug to show missing marks in grade user
+* Recalculate and save total marks of paper after saving or changing
+* Remove MathJax references and replace Katex CDN
+* Add feature to allow to extend time even if the paper is completed
+
+=== 0.24.0 (09-09-2020) ===
+
+* Fix rendering of the quiz list
+* Fix bug to show maximum marks for all attempts in answerpaper
+* Fix bug to show only distinct answered questions
+
+=== 0.23.0 (09-09-2020) ===
+
+* Allow a single user or multiple users to reattempt a quiz
+
+=== 0.22.1 (28-08-2020) ===
+
+* Avoid duplicate user entry with same email address during upload.
+* Fix a bug where user cannot submit zero as answer
+* Fix UI in question statistics.
+* Fix a bug where the trial question paper was not updated.
+* Fix a bug where answers for fill in the blanks type is not shown.
+
+=== 0.22.0 (27-08-2020) ===
+
+* Fix zero division error if the course does not have any quizzes.
+* Improve question statistics
+* Add Mathjax support to lesson and module.
+
+=== 0.21.0 (02-07-2020) ===
+
+* Added support for hiding test cases for code questions
+
+=== 0.20.2 (02-06-2020) ===
+
+* Added a custom filter to convert str objects to int in templates
+* Fixed a bug that prevented users from seeing the last submitted MCQ answers
+* Updated the TinyMCE editor with multiple plugins
+* Fixed issue in question file upload for empty question instance
+* Changed variable name for uploaded file to avoid conflict with the queryset variable
+* Display question solution in view answer paper
+* Fixed bug to check if attempts are allowed and spare time is available before answer is checked 
+
+=== 0.20.1 (21-05-2020) ===
+
+* Rename celery.py to celery_settings.py to avoid conflicts with the celery app
+
+=== 0.20.0 (20-05-2020) ===
+
+* Added a discussion forum feature
+* Added a reject select button to reject mulitple students from a course
+* Added a celery task to regrade the papers
+* Merge monitor, grade user and regrade dashboard into a single consolidated dashboard
+* Fixed pagination and other issues while searching courses, questions
+* Added a search and a dropdown in grade user section
+* Added more tests for start quiz view function
+* Added a additional option "other" in language for a question which supports all types of question except the coding type
+* Fixed search in discussion forum
+* Added API for yaksh
+
+=== 0.14.0 (07-04-2020) ===
+
+* Added search bar for searching course
+* Added codemirror for R language
+* Fixed a bug which did not allow to save the empty expected input field for 
+Standard input output based test case
+* Improved UX for creating course modules, lessons, quizzes and practice exercises
+* Fixed bug in the custom middleware to get proper user timezone and manage
+concurrent user logins
+* Prettify error message for R language
+
+=== 0.13.0 (11-03-2020) ===
+
+* Revamped the UI and UX for the interface and standardised with Bootstrap 4 (Lumen theme from https://bootswatch.com/)
+* Fixed a bug that caused failure when pre-existing tags for Questions have first capital letter
+* Registered CourseStatus model so that it is available on the Django admin interface
+* Added filters in the Django admin for filtering courses
+* Modified admin.py to display only specific fields of AnswerPaper
+
+=== 0.12.0 (04-02-2020) ===
+
+* Added syntax highlighting to the code answers in answerpaper
+* Added feature to allow adding newlines to Standard IO testcases
+* Added an evaluator to support R language
+* Fixed bug to only allow self created grading systems to show up in the course
+form
+* Fixed bug to hide deleted questions from search results
+* Fixed bug to check if residual files exist before teardown operations in
+JavaStdIOEvaluator
+
+=== 0.11.0 (27-09-2019) ===
+
+* Upgraded python-social-auth 0.2.19 to social-auth-app-django 3.1.0
+* Moved all download related templates to a new subfolder and added homepage link to navbar logo
+* Fixed Python version used in command line installer
+* Fixed HTML/CSS to prevent browser from horizontal scrolling
+* Improved the download course functionality
+* Fixed Nonetype error due to incorrect if-else during course code search
+* Fixed course filter query to display only non trial courses on the dashboard
+* Upgrade Django version
+* Fixed multiple bugs in Offline and Online Yaksh interface
+
+=== 0.10.0 (24-04-2019) ===
+
+* Upgraded Django version from 1.10 to 1.11.18.
+* Upgraded JQuery-UI version from 1.9.1 to 1.12.1
+* Changed UI to show alert on clicking "Undo changes" button on programming questions in quiz.
+* Fixed download link for files in questions
+* Added Preview Questionpaper to Edit Quiz interface
+* Added a toggle option to allow moderator to hide grades
+* Changed UI on Student Dashboard
+* Added a link to edit Question while designing Question Paper
+* Removed custom Fonts used in new UI
+* Changed UI on View Module screen and Quiz screen interface for students
+* Add Download Course button in Course Module template
+* Fixed the bug that prevented students from opening a quiz if status is inprogress
+* Changed UI on Course Status Page and Monitor Page
+* Added functionality to restrict access to next module based on passing previous module
+* Fixed the CSV upload bug that prevented user from being added to a new course in case the user was aready enrolled in another course
+
+=== 0.9.1 (07-02-2019) ===
+
+* Changed routing so that opening the base URL will redirect user to /exam
+* Updated storage hierarchy of uploaded assignments so that they are stored
+  per course and per quiz
+* Deprecated yaksh cli.py script
+* Changed and Upgraded UI
+* Fixed a bug where assigning moderator privileges with create_moderator
+  command did not set is_moderator to True
+* Fixed a bug that caused incorrect rendering of Unit Completion
+* Fixed a bug to allow escaping of special characters in rendered answers
+* Fixed a bug that fetched the same course multiple times when the user is
+  creator and teacher
+* Deprecated the 'course_completion_percent' custom template tag
+* Fixed overall Course Completion percentage in Student interface
+* Fixed the broken Monitor interface UI
+* Fixed a bug to remove user as teacher of any course if is_moderator is set
+  to False
+* Fixed the broken Create Question Paper interface UI
+* Improve the Question Legend in Exam interface
+* Fixed embed video link modal alignment in Add Lesson and Add Module
+  interface
+
+=== 0.9.0 (13-07-2018) ===
+
+* Questions can be searched using tags while creating/editing question papers.
+* Fixed a bug that would not select all questions in Question page.
+* Fixed a bug in QuestionFilterForm that would force marks value to be selected
+  in Question page.
+* Added a feature that can download all lessons of a course for offline viewing.
+* Yaml files can be used to upload Questions along with zip files.
+  Support for uploading multiple Yaml files at once also added.
+* Moderator can switch between student and moderator from the dashboard.
+* Updated Yaksh to act like a Django app. Updated pip package.
+* Appropriate Exceptions are raised for C, C++ and Java assertion and
+  STDIO questions.
+* Fixed a bug that would create multiple TestCaseOrder objects for an
+  answerpaper.
+* Updated README.rst.
+
+=== 0.8.1 (18-06-2018) ===
+
+* Fixed a bug where quiz completion shows inprogress even after completing.
+* Changed send bulk mail to add recipients to BCC list instead of TO list.
+* Changed course status feature to view student progress more easily and quickly.
+* Changed student course dashboard to view completion percentage per module and
+  overall course.
+* Added support for nose asserts for python assertion based evaluation.
+* Added a new feature to show error line number in student code for python
+  based questions only.
+* Replaced django render_to_response function with render function in views.
+* Upgraded Django version from 1.9.5 to 1.10.
+* Fixed pep8 for the code base.
+* Fixed a bug that allows answer to be true if there are no test cases to a code
+  question.
+
+=== 0.8.0 (23-03-2018) ===
+
+* Refactored the add_group command to allow creation of moderator group and add users to moderator group and renamed to create_moderator.
+* Deprecated multiple management commands: dump_user_data, load_exam, load_question_xml, results2csv.
+* Changed the unit of time_between_attempts field within Quiz model from days to hours.
+* Fixed assignment upload feature.
+* Error output is displayed using Ajax instead of reloading the entire page.
+* Added Mathjax to the repository.
+* Added Yaksh logo on the website.
+* Changed travis build distribution from precise (Ubuntu 12.04 LTS) to trusty (Ubuntu 14.04 LTS).
+* Fixed a bug that allowed creation of multiple answerpapers.
+* Added MCQ/MCC Shuffle testcases feature for question paper.
+* Added Arrange in Correct Order question type feature.
+* Added a feature to create a course with lessons, quizzes and exercises.
+* Fixed a bug where a oauth users' email is not verified.
+* Added a feature to show per student course completion status.
+* Fixed a bug where a moderator could change question paper of other moderator.
+* Fixed a bug where a teacher could not access question paper for a course.
+* Fixed a bug where a teacher could become the course creator while editing a course.
+* Updated clone course feature to create copy of course, lessons, quizzes and learning modules.
+* Changed Student dashboard to show the days remaining for a course to start.
+* Changed UI for student and moderator dashboard.
+* Updated documentation
+* Added a feature where a moderator can create exercises.
+* Added grading feature which allows a moderator to create a grading system and apply it for a course.
+
+
+=== 0.7.0 (15-11-2017) ===
+
+* Simplified Standard I/O type question error output.
+* Added the facility to search questions using tags.
+* Added the facility to search for user profiles on admin site.
+* Replaced json format with yaml format for downloading and uploading questions.
+* Fixed a bug that returned multiple answerpaper objects for a user.
+* Fixed a bug that allowed anonymous users access quit exam page.
+* Fixed a bug that prevented moderators from changing passwords.
+* Fixed a bug that returned nonetype object as the last attempted answer.
+* Updated the validation of MCQ/MCC type question.
+* Fixed a bug that did not allow expected input in Standard I/O type question to be none.
+* UI changes in grade user, view answerpaper and monitor pages.
+* Added the facility to create users by uploading CSV.
+* Fixed a bug that would require shebang to be put in for Bash assertion based questions.
+* Bug fixed that did not allow to edit a profile.
+* Updated Courses Page to show active courses on top.
+* Added a Datetimepicker to edit course Page.
+* Added invoke script for quickstart and docker deployment.
+* Added the facility to send mails to all students enrolled in a course.
+* Fixed a bug that would cause issue during email activation key check.
+* Added comprehensive tests for views.py.
+* Fixed a bug that allowed moderators to set cyclic quiz prerequisites in a course.
+* Added a feature that redirects to edit profile page if user has no profile.
+* Fixed a bug that would allow enrolled students to attempt quizzes for deactivated courses.
+* Added link on the landing page to Online test Github repository.
+* Updated Code server to tornado server which takes a post request to submit a job asynchronously.
+* Updated bulk email editor from Froala editor to TinyMCE editor.
+* Fixed a bug that would take the maximum marks scored by a user in all attempts for non coding questions.
+* Added a feature that would allow a user to see previously submitted answers for non code questions.
+* Last submitted answer is updated instead of appending for non coding questions.
+* User answers for code questions are stored but not evaluated during skipping questions.
+* Added logged in user information in footer of the base html page.
+* Fixed a bug that would not shuffle questions in a quiz.
+* Updated a feature that allows user to quit the paper manually and revisit the paper if necessary.
+* Updated snippets for questions to be multilines.
+* Fixed a bug that did not reset answer during quiz.
+* Updated download quiz details feature to be more informative.
+* Simplified Assertion type question error output for Python.
+* Added a feature that prepopulates the test case type field when adding test cases to questions.
+
+=== 0.6.0 (11-05-2017) ===
+
+* Added a course code field that can be used to search a course.
+* Updated the documentation to describe the course code feature.
+* Fixed a bug that prevented redirection based on 'next' parameter after login.
+* Fixed a bug that littered residual system processes created by code evaluators.
+* Added the facility to allow moderators to see and download uploaded assignments.
+* Fixed a bug that prevented teachers of a course from editing Question papers.
+* Added a start time and end time for enrollment of a course.
+* Added the facility to allow moderators to edit the details of a course.
+* Added a test_settings.py file to avoid using the committed migrations and rebuild database from scratch while running tests.
+
+=== 0.5.0 (22-03-2017) ===
+
+* Fixed a bug that prevented question tags from being saved when saving questions.
+* Added new question types: 'String Type', 'Integer Type' and 'Float Type'.
+* Fixed a bug that prevented questions from appearing in the same order as they had been added.
+* Added the feature to allow moderators to check uploaded assignments using code hooks.
+* Added error handling for question json upload.
+* Added mathjax rendering to text boxes.
+* Added migration commands to the script.
+* Added migrations folder to the yaksh app.
+* Removed a function call to datetime.now() to set defaults for quiz start time.
+* Fixed a bug that displayed the elements of stdout testcase output as unicode.
+* Fixed a bug that prevented users from logging in using Google OAuth.
+* Added coverage reports to travis.yml.
