@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Quiz</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: 2em auto; }
+  h1 { text-align: center; }
+  .question { font-weight: bold; margin-top: 1em; }
+  .options label { display: block; margin: 0.5em 0; }
+  button { margin-top: 1em; padding: 0.5em 1em; }
+  #result { margin-top: 1em; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Simple Quiz</h1>
+
+<div id="quiz-container">
+  <div class="question" id="question"></div>
+  <div class="options" id="options"></div>
+  <button onclick="submitAnswer()">Submit Answer</button>
+  <div id="result"></div>
+</div>
+
+<script>
+const quizQuestions = [
+  {
+    question: "What is the official name for HTML?",
+    options: ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
+    answer: 0
+  },
+  {
+    question: "Which tag is used to insert a line
