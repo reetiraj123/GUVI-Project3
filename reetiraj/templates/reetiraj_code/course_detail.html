@@ -1,0 +1,65 @@
+{% extends "manage.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %} Course Details {% endblock title %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'yaksh/js/course.js' %}"></script>
+<script type="text/javascript" src="{% static 'yaksh/js/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'yaksh/js/jquery-ui.js' %}"></script>
+<script type="text/javascript" src="{% static 'yaksh/js/jquery.tablesorter.min.js' %}">
+</script>
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'yaksh/css/jquery-ui/jquery-ui.css' %}">
+{% endblock %}
+
+<div class="text-center">
+{% block pagetitle %} <h1>{{ course.name|title }}</h1> {% endblock %}
+</div>
+
+{% block content %}
+<hr>
+<div id="dialog" title="Alert">
+    <p id="error_msg"></p>
+</div>
+<div class="container-fluid">
+    <div class="justify-content-center">
+        {% include "yaksh/course_detail_options.html" %}
+    </div>
+</div>
+<br><br>
+<div class="container">
+    <div class="tab-content">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-dismissible alert-{{ message.tags }}">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="fa fa-close"></i>
+                </button>
+                <strong>{{ message }}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% if is_students %}
+            {% include "yaksh/course_students.html" %}
+        {% elif is_mail %}
+            {% include "yaksh/course_send_mail.html" %}
+        {% elif is_progress %}
+            {% include "yaksh/course_progress.html" %}
+        {% elif is_modules %}
+            {% include "yaksh/course_added_modules.html" %}
+        {% elif is_design_course %}
+            {% include "yaksh/design_course_session.html" %}
+        {% elif is_add_teacher %}
+            {% include "yaksh/addteacher.html" %}
+        {% elif is_teachers %}
+            {% include "yaksh/course_teachers.html" %}
+        {% elif is_upload_download_md %}
+            {% include "yaksh/upload_download_course_md.html" %}
+        {% else %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
